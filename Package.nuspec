@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FluentQueryBuilder</id>
+    <version>1.0.0</version>
+    <authors>UlasauV</authors>
+    <owners>UlasauV</owners>
+	<licenseUrl>https://github.com/vulasau/fluent-query-builder.standard/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/vulasau/fluent-query-builder</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>An extensions for fluent mapping of object properties to dynamic entity and building string queries based on this properties parsing expression trees.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2019</copyright>
+    <tags>FluentQueryBuilder Fluent QueryBuilder ExpressionParser</tags>
+  </metadata>
+  <files>
+	<file src="FluentQueryBuilder\FluentQueryBuilder\bin\Debug\netstandard2.0" target="lib\netstandard2.0\FluentQueryBuilder.dll"/>
+  </files>
+</package>
