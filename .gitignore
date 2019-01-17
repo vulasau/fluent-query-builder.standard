@@ -1,3 +1,7 @@
 /FluentQueryBuilder/FluentQueryBuilder/bin
 /FluentQueryBuilder/FluentQueryBuilder/obj
 /FluentQueryBuilder/.vs
+/FluentQueryBuilder/FluentQueryBuilder.Tests/bin
+/FluentQueryBuilder/FluentQueryBuilder.Tests/obj
+/FluentQueryBuilder/FluentQueryBuilder.Application/bin
+/FluentQueryBuilder/FluentQueryBuilder.Application/obj
