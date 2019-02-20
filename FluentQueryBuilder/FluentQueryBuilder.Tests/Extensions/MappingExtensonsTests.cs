@@ -122,5 +122,27 @@ namespace FluentQueryBuilder.Tests.Extensions
             Assert.AreEqual(fluentModel.ConditionedProperty, FluentModel.CONDITIONED_VALUE);
             Assert.AreNotEqual(fluentModel.ConditionedReverseProperty, FluentModel.CONDITIONED_REVERSE_VALUE);
         }
+
+        [TestMethod]
+        public void ShouldMapNestedModelToFluentObject()
+        {
+            var nestedModel = new NestedModel();
+            nestedModel.Number = 10;
+            nestedModel.Date = new System.DateTime(2000, 1, 1);
+            nestedModel.Text = "Text";
+
+            var fluentObject = nestedModel.MapToFluentObject();
+
+            Assert.IsNotNull(fluentObject);
+            Assert.AreEqual(fluentObject.Name, NestedModelFields.MODEL_NAME);
+
+            Assert.IsTrue(fluentObject.ContainsKey(NestedModelFields.NUMBER_PROPERTY_NAME));
+            Assert.IsTrue(fluentObject.ContainsKey(NestedModelFields.DATE_PROPERTY_NAME));
+            Assert.IsTrue(fluentObject.ContainsKey(NestedModelFields.TEXT_PROPERTY_NAME));
+
+            Assert.AreEqual(fluentObject[NestedModelFields.NUMBER_PROPERTY_NAME], "10");
+            Assert.AreEqual(fluentObject[NestedModelFields.DATE_PROPERTY_NAME], (new System.DateTime(2000, 1, 1)).ToString());
+            Assert.AreEqual(fluentObject[NestedModelFields.TEXT_PROPERTY_NAME], "Text");
+        }
     }
 }

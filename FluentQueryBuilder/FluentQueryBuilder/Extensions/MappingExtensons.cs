@@ -36,7 +36,7 @@ namespace FluentQueryBuilder.Extensions
             if (source.GetType() != type)
                 throw new ArgumentException("Parameter 'type' should reflect source element type 'T'.", "type");
 
-            var fluentEntityAttribute = type.GetCustomAttributes(typeof(FluentEntityAttribute), false).SingleOrDefault() as FluentEntityAttribute;
+            var fluentEntityAttribute = type.GetCustomAttributes(typeof(FluentEntityAttribute),true).SingleOrDefault() as FluentEntityAttribute;
             if (fluentEntityAttribute == null)
                 return null;
 

@@ -13,6 +13,7 @@
     <PackageTags>FluentQueryBuilder Fluent QueryBuilder ExpressionParser</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>vulasau</Company>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
 </Project>
