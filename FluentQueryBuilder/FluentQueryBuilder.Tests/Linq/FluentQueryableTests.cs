@@ -82,5 +82,20 @@ namespace FluentQueryBuilder.Tests.Linq
             Assert.AreEqual(items[0].DateProperty, NamedFluentModelBase.DATE_VALUE);
             _queryExecutor.VerifyAll();
         }
+
+        [TestMethod]
+        public void ExecuteForSingleTest()
+        {
+            var query = "SELECT boolean, date FROM model \r\nWHERE (boolean = False) \r\nLIMIT 1\r\n";
+
+            _queryExecutor.Setup(x => x.ExecuteForSingle(query)).Returns(_fluentObject);
+
+            var item = _fluentQueriable.ExecuteForSingle(query);
+
+            Assert.IsNotNull(item);
+            Assert.AreEqual(item.BooleanProperty, NamedFluentModelBase.BOOLEAN_VALUE);
+            Assert.AreEqual(item.DateProperty, NamedFluentModelBase.DATE_VALUE);
+            _queryExecutor.VerifyAll();
+        }
     }
 }
