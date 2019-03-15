@@ -15,14 +15,6 @@ namespace FluentQueryBuilder.Attributes
         public string Name { get; private set; }
 
         /// <summary>
-        /// Type of converter which is used for mapping process.
-        /// If set, conerter of this type will be used for property value mapping during serialization/deserialization process.
-        /// If not set, one of default converters will be used, based on the property type.
-        /// Converter should implement IPropertyConverter interface.
-        /// </summary>
-        public Type Converter { get; private set; }
-
-        /// <summary>
         /// Indicates, whether property is readonly.
         /// If value is 'true', property will be mapped only 'from' Fluentobject, but will be ignored when mapping 'to' FluentObject.
         /// Paramter is 'false' by default.
@@ -38,7 +30,6 @@ namespace FluentQueryBuilder.Attributes
                 throw new ArgumentException("Converter should should implement 'IPropertyConverter' interface", "converter");
 
             Name = name;
-            Converter = converter;
             IsReadony = isReadonly;
         }
     }
