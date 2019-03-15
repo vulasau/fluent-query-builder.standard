@@ -13,8 +13,8 @@
     <PackageTags>FluentQueryBuilder Fluent QueryBuilder ExpressionParser</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>vulasau</Company>
-    <Version>1.1.1</Version>
-    <PackageReleaseNotes>Moved query execution interfaces from IFluentQueryable to IFluentList</PackageReleaseNotes>
+    <Version>1.1.2</Version>
+    <PackageReleaseNotes>Object mapper uses converter factory which may be set in configuration and implement DI.</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
