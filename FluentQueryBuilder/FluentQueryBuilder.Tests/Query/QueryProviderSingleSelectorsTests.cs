@@ -1,4 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentQueryBuilder.Query;
+using FluentQueryBuilder.Tests.Models;
+using FluentQueryBuilder.Tests.Models.Enums;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FluentQueryBuilder.Tests.Query
 {
@@ -26,6 +29,16 @@ namespace FluentQueryBuilder.Tests.Query
         {
             var query = _queryProvider.Where(x => x.BooleanProperty == false).FirstOrDefault(x => x.DoubleProperty != 55.5);
             var expectedString = "SELECT boolean, conditioned, date, double, integer, object, readonly FROM model \r\nWHERE (boolean = False)  AND (double != 55.5) \r\nLIMIT 1\r\n";
+            Assert.AreEqual(expectedString, query);
+        }
+
+        [TestMethod]
+        public void ShouldBuildFirstOrDefaultEnumComparisonPredicateQuery()
+        {
+            var queryProvider = new QueryProvider<ConvertableModel>();
+
+            var query = queryProvider.FirstOrDefault(x => x.ConvertableProperty != EnumValue.FirstValue);
+            var expectedString = "SELECT ConvertableProperty_c FROM ConvertableModel \r\nWHERE (ConvertableProperty_c != 'First Value') \r\nLIMIT 1\r\n";
             Assert.AreEqual(expectedString, query);
         }
     }

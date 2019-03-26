@@ -13,7 +13,7 @@
     <PackageTags>FluentQueryBuilder Fluent QueryBuilder ExpressionParser</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>vulasau</Company>
-    <Version>1.1.3</Version>
+    <Version>1.1.4</Version>
     <PackageReleaseNotes>Moved converter parameters from FluentProeprtyAttribute to separate ConverterAttribute.
 		Breaking changes.</PackageReleaseNotes>
   </PropertyGroup>
