@@ -82,7 +82,6 @@ namespace FluentQueryBuilder.Linq
             return number;
         }
 
-
         public virtual T ExecuteForSingle(string query)
         {
             var item = _queryExecutor.ExecuteForSingle(query);
