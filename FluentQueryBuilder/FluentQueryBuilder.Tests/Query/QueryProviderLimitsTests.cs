@@ -1,15 +1,18 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace FluentQueryBuilder.Tests.Query
 {
     [TestClass]
     public class QueryProviderLimitsTests : QueryProviderTests
     {
+        private readonly string _nl = Environment.NewLine;
+
         [TestMethod]
         public void ShouldBuildLimitationQuery()
         {
             var query = _queryProvider.Take(25).ToArray();
-            var expectedString = "SELECT boolean, conditioned, date, double, integer, object, readonly FROM model \r\nLIMIT 25 \r\n";
+            var expectedString = $"SELECT boolean, conditioned, date, double, integer, object, readonly FROM model {_nl}LIMIT 25 {_nl}";
             Assert.AreEqual(expectedString, query);
         }
 
@@ -17,7 +20,7 @@ namespace FluentQueryBuilder.Tests.Query
         public void ShouldBuildConditionalLimitationQuery()
         {
             var query = _queryProvider.Where(x => x.BooleanProperty == false).Take(25).ToArray();
-            var expectedString = "SELECT boolean, conditioned, date, double, integer, object, readonly FROM model \r\nWHERE (boolean = False) \r\nLIMIT 25 \r\n";
+            var expectedString = $"SELECT boolean, conditioned, date, double, integer, object, readonly FROM model {_nl}WHERE (boolean = False) {_nl}LIMIT 25 {_nl}";
             Assert.AreEqual(expectedString, query);
         }
     }

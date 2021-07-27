@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using FluentQueryBuilder.Linq;
 using FluentQueryBuilder.Query;
 using FluentQueryBuilder.Tests.Models;
@@ -16,7 +17,8 @@ namespace FluentQueryBuilder.Tests.Linq
         protected IFluentList<NamedFluentModelBase> _fluentQueriable;
 
         protected FluentObject _fluentObject;
-            
+        private readonly string _nl = Environment.NewLine;
+
         [TestInitialize]
         public void InitializeTest()
         {
@@ -43,7 +45,7 @@ namespace FluentQueryBuilder.Tests.Linq
         [TestMethod]
         public void FirstOrDefault()
         {
-            var query = "SELECT boolean, date FROM model \r\nLIMIT 1\r\n";
+            var query = $"SELECT boolean, date FROM model {_nl}LIMIT 1{_nl}";
             _queryExecutor.Setup(x => x.ExecuteForSingle(query)).Returns(_fluentObject);
 
             var item = _fluentQueriable.FirstOrDefault();
@@ -57,7 +59,7 @@ namespace FluentQueryBuilder.Tests.Linq
         [TestMethod]
         public void FirstOrDefaultWithConditions()
         {
-            var query = "SELECT boolean, date FROM model \r\nWHERE (boolean = False) \r\nLIMIT 1\r\n";
+            var query = $"SELECT boolean, date FROM model {_nl}WHERE (boolean = False) {_nl}LIMIT 1{_nl}";
             _queryExecutor.Setup(x => x.ExecuteForSingle(query)).Returns(_fluentObject);
 
             var item = _fluentQueriable.FirstOrDefault(x => x.BooleanProperty == false);
@@ -71,7 +73,7 @@ namespace FluentQueryBuilder.Tests.Linq
         [TestMethod]
         public void Where()
         {
-            var query = "SELECT boolean, date FROM model \r\nWHERE (boolean = True) \r\n";
+            var query = $"SELECT boolean, date FROM model {_nl}WHERE (boolean = True) {_nl}";
             _queryExecutor.Setup(x => x.ExecuteForMultiple(query)).Returns(new[] { _fluentObject });
 
             var items = _fluentQueriable.Where(x => x.BooleanProperty == true).ToArray();
@@ -86,7 +88,7 @@ namespace FluentQueryBuilder.Tests.Linq
         [TestMethod]
         public void ExecuteForSingleTest()
         {
-            var query = "SELECT boolean, date FROM model \r\nWHERE (boolean = False) \r\nLIMIT 1\r\n";
+            var query = $"SELECT boolean, date FROM model {_nl}WHERE (boolean = False) {_nl}LIMIT 1{_nl}";
 
             _queryExecutor.Setup(x => x.ExecuteForSingle(query)).Returns(_fluentObject);
 
