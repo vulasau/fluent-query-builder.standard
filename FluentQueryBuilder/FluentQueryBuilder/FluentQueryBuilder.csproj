@@ -13,10 +13,10 @@
     <PackageTags>FluentQueryBuilder Fluent QueryBuilder ExpressionParser</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Company>vulasau</Company>
-    <Version>1.1.5</Version>
-    <PackageReleaseNotes>Bug fixes.
-Refactoing.
-Enum comparison expressions parser.</PackageReleaseNotes>
+    <Version>1.1.6</Version>
+    <PackageReleaseNotes>
+      Added ordering to FirstOrDefault
+    </PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
